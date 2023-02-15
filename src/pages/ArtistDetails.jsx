@@ -26,10 +26,13 @@ const ArtistDetails = () => {
 
   // console.log('stuff...', artistData.data[0].views)
   const topSongs = artistData.data[0].views['top-songs']
+  const artistBio = artistData.data[0].attributes.artistBio
 
   return (
     <div className="flex flex-col">
       <DetailsHeader artistId={artistId} artistData={artistData} />
+
+      {/* <p>{artistBio}</p> */}
 
       {/* TODO: ADD TOP SONGS OR RELATED ARTISTS */}
 
