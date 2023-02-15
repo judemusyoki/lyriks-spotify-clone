@@ -1,5 +1,47 @@
-const ArtistDetails = () => (
-  <div>ArtistDetails</div>
-);
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-export default ArtistDetails;
+import {
+  DetailsHeader,
+  Error,
+  Loader,
+  RelatedSongs as TopSongs,
+} from '../components'
+import { useGetArtistDetailsQuery } from '../redux/services/shazamCore'
+
+const ArtistDetails = () => {
+  const { id: artistId } = useParams()
+
+  const { activeSong, isPlaying } = useSelector((state) => state.player)
+
+  const {
+    data: artistData,
+    isFetching: isFetchingArtistData,
+    error: artistError,
+  } = useGetArtistDetailsQuery(artistId)
+
+  if (isFetchingArtistData) return <Loader title="Loading artist details..." />
+
+  if (artistError) return <Error />
+
+  // console.log('stuff...', artistData.data[0].views)
+  const topSongs = artistData.data[0].views['top-songs']
+
+  return (
+    <div className="flex flex-col">
+      <DetailsHeader artistId={artistId} artistData={artistData} />
+
+      {/* TODO: ADD TOP SONGS OR RELATED ARTISTS */}
+
+      <TopSongs
+        title="Top Songs"
+        data={topSongs.data}
+        artistId={artistId}
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+      />
+    </div>
+  )
+}
+
+export default ArtistDetails

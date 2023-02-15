@@ -7,14 +7,17 @@ const RelatedSongs = ({
   handlePauseClick,
   handlePlayClick,
   artistId,
+  title,
 }) => (
   <div className="flex flex-col">
-    <h1 className="font-bold text-3xl text-white">Related Songs:</h1>
+    <h1 className="font-bold text-3xl text-white">
+      {title || 'Related Songs'}:
+    </h1>
 
     <div className="mt-6 w-full flex flex-col">
       {data?.map((song, i) => (
         <SongBar
-          key={`${song.key}-${artistId}`}
+          key={`${i}-${song.key}-${artistId}`}
           song={song}
           i={i}
           artistId={artistId}
