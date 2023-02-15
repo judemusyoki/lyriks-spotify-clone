@@ -24,9 +24,8 @@ const ArtistDetails = () => {
 
   if (artistError) return <Error />
 
-  // console.log('stuff...', artistData.data[0].views)
   const topSongs = artistData.data[0].views['top-songs']
-  const artistBio = artistData.data[0].attributes.artistBio
+  // const artistBio = artistData.data[0].attributes.artistBio
 
   return (
     <div className="flex flex-col">
