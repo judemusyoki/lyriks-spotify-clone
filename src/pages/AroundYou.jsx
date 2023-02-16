@@ -10,6 +10,7 @@ const AroundYou = () => {
   const [country, setCountry] = useState('')
   const [loading, setLoading] = useState(true)
   const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const GEO_IPFY_API = import.meta.env.VITE_GEO_IPFY_API
 
   const {
     data: songsData,
@@ -19,9 +20,7 @@ const AroundYou = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://geo.ipify.org/api/v2/country?apiKey=at_6qWr9yp7P153a6vKmXElyVZVdhOi2`,
-      )
+      .get(GEO_IPFY_API)
       .then((res) => setCountry(res?.data?.location?.country))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false))
