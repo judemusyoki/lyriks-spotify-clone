@@ -8,7 +8,7 @@ To get started with the app, you can follow these steps:
 
 1. Clone the repository to your local machine:
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git clone https://github.com/judemusyoki/lyriks-spotify-clone.git
 ```
 2. Install the dependencies:
 ```
